@@ -29,9 +29,16 @@ litters_df = janitor::clean_names(litters_df)
 pups_df = janitor::clean_names(pups_df)
 ```
 
-## Look at the data:
+## Look at data head/tail:
 ```{r}
 head(litters_df)
+
+tail(pups_df)
 ```
 
+
+## Skim to summarize info about data.
+```{r}
+skimr::skim(pups_df)
+```
 
