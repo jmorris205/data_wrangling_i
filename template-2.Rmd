@@ -9,6 +9,7 @@ This file is for data imports.
 ```{r}
 library(tidyverse)
 library(readxl)
+library(haven)
 ```
 
 ## Load first data set:
@@ -63,6 +64,8 @@ head(mlb_df)
 # Load FOTR:
 fotr_df = read_excel("data/LotR_Words.xlsx", 
                      range = "B3:D6")
+# Clean names:
+fotr_df = janitor::clean_names(fotr_df)
 
 fotr_df
 
@@ -70,8 +73,23 @@ fotr_df
 tt_df = read_excel("data/LotR_Words.xlsx", 
                      range = "F3:H6")
 
+# Clean names:
+tt_df = janitor::clean_names(tt_df)
+
 tt_df
 ```
 
 
+## Import SAS
+Read in PULSE data:
+```{r}
+# Load Data:
+pulse_df = 
+  read_sas("data/public_pulse_data.sas7bdat")
+
+# Clean names:
+pulse_df = janitor::clean_names(pulse_df)
+
+pulse_df
+```
 
