@@ -3,3 +3,35 @@ title: "Data Import"
 output: github_document
 ---
 
+This file is for data imports.
+
+# Load Packages
+```{r}
+library(tidyverse)
+```
+
+## Load Data
+```{r}
+## Import litter df:
+litters_df =
+  read_csv(file = "data/FAS_litters.csv", na = c('.', "NA"))
+
+## Import pups data:
+pups_df =
+  read_csv("data/FAS_pups.csv", skip = 3, na = c('.', "NA"))
+```
+
+## Clean Data:
+```{r}
+## Change column labels to snake case.
+litters_df = janitor::clean_names(litters_df)
+
+pups_df = janitor::clean_names(pups_df)
+```
+
+## Look at the data:
+```{r}
+head(litters_df)
+```
+
+
