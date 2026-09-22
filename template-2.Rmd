@@ -8,6 +8,7 @@ This file is for data imports.
 # Load Packages
 ```{r}
 library(tidyverse)
+library(readxl)
 ```
 
 ## Load first data set:
@@ -47,4 +48,30 @@ skimr::skim(pups_df)
 ```
 
 ## Oh excel ...
+```{r}
+# Load mlb data:
+mlb_df = read_excel("data/mlb11.xlsx")
+```
+
+### Look at excel data:
+```{r}
+head(mlb_df)
+```
+
+## Load some LOTR data:
+```{r}
+# Load FOTR:
+fotr_df = read_excel("data/LotR_Words.xlsx", 
+                     range = "B3:D6")
+
+fotr_df
+
+# Load two towers:
+tt_df = read_excel("data/LotR_Words.xlsx", 
+                     range = "F3:H6")
+
+tt_df
+```
+
+
 

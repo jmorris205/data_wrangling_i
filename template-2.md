@@ -20,6 +20,10 @@ library(tidyverse)
     ## ✖ dplyr::lag()    masks stats::lag()
     ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
+``` r
+library(readxl)
+```
+
 ## Load first data set:
 
 ``` r
@@ -135,3 +139,57 @@ Data summary
 | pd_walk       |         0 |          1.00 |  9.50 | 1.34 |   7 |   9 |   9 |  10 |   14 | ▆▇▇▂▁ |
 
 ## Oh excel …
+
+``` r
+# Load mlb data:
+mlb_df = read_excel("data/mlb11.xlsx")
+```
+
+### Look at excel data:
+
+``` r
+head(mlb_df)
+```
+
+    ## # A tibble: 6 × 12
+    ##   team         runs at_bats  hits homeruns bat_avg strikeouts stolen_bases  wins
+    ##   <chr>       <dbl>   <dbl> <dbl>    <dbl>   <dbl>      <dbl>        <dbl> <dbl>
+    ## 1 Texas Rang…   855    5659  1599      210   0.283        930          143    96
+    ## 2 Boston Red…   875    5710  1600      203   0.28        1108          102    90
+    ## 3 Detroit Ti…   787    5563  1540      169   0.277       1143           49    95
+    ## 4 Kansas Cit…   730    5672  1560      129   0.275       1006          153    71
+    ## 5 St. Louis …   762    5532  1513      162   0.273        978           57    90
+    ## 6 New York M…   718    5600  1477      108   0.264       1085          130    77
+    ## # ℹ 3 more variables: new_onbase <dbl>, new_slug <dbl>, new_obs <dbl>
+
+## Load some LOTR data:
+
+``` r
+# Load FOTR:
+fotr_df = read_excel("data/LotR_Words.xlsx", 
+                     range = "B3:D6")
+
+fotr_df
+```
+
+    ## # A tibble: 3 × 3
+    ##   Race   Female  Male
+    ##   <chr>   <dbl> <dbl>
+    ## 1 Elf      1229   971
+    ## 2 Hobbit     14  3644
+    ## 3 Man         0  1995
+
+``` r
+# Load two towers:
+tt_df = read_excel("data/LotR_Words.xlsx", 
+                     range = "F3:H6")
+
+tt_df
+```
+
+    ## # A tibble: 3 × 3
+    ##   Race   Female  Male
+    ##   <chr>   <dbl> <dbl>
+    ## 1 Elf       331   513
+    ## 2 Hobbit      0  2463
+    ## 3 Man       401  3589
