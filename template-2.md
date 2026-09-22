@@ -20,18 +20,14 @@ library(tidyverse)
     ## ✖ dplyr::lag()    masks stats::lag()
     ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
-## Load Data
+## Load first data set:
 
 ``` r
 ## Import litter df:
 litters_df =
-  read_csv(file = "data/FAS_litters.csv", na = c('.', "NA"))
+  read_csv(file = "data/FAS_litters.csv", 
+           na = c('.', "NA", ""))
 ```
-
-    ## Warning: One or more parsing issues, call `problems()` on your data frame for details,
-    ## e.g.:
-    ##   dat <- vroom(...)
-    ##   problems(dat)
 
     ## Rows: 49 Columns: 8
     ## ── Column specification ────────────────────────────────────────────────────────
@@ -43,9 +39,18 @@ litters_df =
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ``` r
-## Import pups data:
+## Change column labels to snake case.
+litters_df = janitor::clean_names(litters_df)
+```
+
+## Load second data set:
+
+``` r
+## Import pups df:
 pups_df =
-  read_csv("data/FAS_pups.csv", skip = 3, na = c('.', "NA"))
+  read_csv("data/FAS_pups.csv", 
+           skip = 3, 
+           na = c('.', "NA", ""))
 ```
 
     ## Rows: 313 Columns: 6
@@ -57,12 +62,8 @@ pups_df =
     ## ℹ Use `spec()` to retrieve the full column specification for this data.
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
-## Clean Data:
-
 ``` r
 ## Change column labels to snake case.
-litters_df = janitor::clean_names(litters_df)
-
 pups_df = janitor::clean_names(pups_df)
 ```
 
@@ -132,3 +133,5 @@ Data summary
 | pd_eyes       |        13 |          0.96 | 12.99 | 0.62 |  12 |  13 |  13 |  13 |   15 | ▂▇▁▂▁ |
 | pd_pivot      |        13 |          0.96 |  7.09 | 1.51 |   4 |   6 |   7 |   8 |   12 | ▂▇▂▂▁ |
 | pd_walk       |         0 |          1.00 |  9.50 | 1.34 |   7 |   9 |   9 |  10 |   14 | ▆▇▇▂▁ |
+
+## Oh excel …

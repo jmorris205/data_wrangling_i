@@ -10,22 +10,26 @@ This file is for data imports.
 library(tidyverse)
 ```
 
-## Load Data
+## Load first data set:
 ```{r}
 ## Import litter df:
 litters_df =
-  read_csv(file = "data/FAS_litters.csv", na = c('.', "NA"))
+  read_csv(file = "data/FAS_litters.csv", 
+           na = c('.', "NA", ""))
 
-## Import pups data:
-pups_df =
-  read_csv("data/FAS_pups.csv", skip = 3, na = c('.', "NA"))
-```
-
-## Clean Data:
-```{r}
 ## Change column labels to snake case.
 litters_df = janitor::clean_names(litters_df)
+```
 
+## Load second data set:
+```{r}
+## Import pups df:
+pups_df =
+  read_csv("data/FAS_pups.csv", 
+           skip = 3, 
+           na = c('.', "NA", ""))
+
+## Change column labels to snake case.
 pups_df = janitor::clean_names(pups_df)
 ```
 
@@ -41,4 +45,6 @@ tail(pups_df)
 ```{r}
 skimr::skim(pups_df)
 ```
+
+## Oh excel ...
 
